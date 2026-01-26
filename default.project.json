@@ -1,0 +1,209 @@
+{
+  "emitLegacyScripts": false,
+  "name": "BuildACrew",
+  "tree": {
+    "$className": "DataModel",
+    "ReplicatedStorage": {
+      "Source": {
+        "$className": "Folder",
+        "Features": {
+          "$className": "Folder",
+          "App": {
+            "$className": "Folder",
+            "Components": {
+              "$className": "Folder",
+              "StuddedFrame": {
+                "$path": "src/Features/app/components/StuddedFrame.luau"
+              }
+            },
+            "Debug": {
+              "$className": "Folder",
+              "Debug.story": {
+                "$path": "src/Features/app/Debug/Debug.story.luau"
+              },
+              "RootUI": {
+                "$path": "src/Features/app/Debug/RootUI.luau"
+              }
+            },
+            "HUD": {
+              "$className": "Folder",
+              "HUD.story": {
+                "$path": "src/Features/app/HUD/HUD.story.luau"
+              },
+              "RootUI": {
+                "$path": "src/Features/app/HUD/RootUI.luau"
+              }
+            },
+            "Menu": {
+              "$className": "Folder",
+              "Menu.story": {
+                "$path": "src/Features/app/Menu/Menu.story.luau"
+              },
+              "RootUI": {
+                "$path": "src/Features/app/Menu/RootUI.luau"
+              }
+            },
+            "Popup": {
+              "$className": "Folder",
+              "Popup.story": {
+                "$path": "src/Features/app/Popup/Popup.story.luau"
+              },
+              "RootUI": {
+                "$path": "src/Features/app/Popup/RootUI.luau"
+              }
+            }
+          },
+          "Game": {
+            "$className": "Folder",
+            "PlotService": {
+              "$className": "Folder",
+              "PlotServiceClient": {
+                "$path": "src/Features/game/PlotService/PlotServiceClient.luau"
+              },
+              "PlotServiceUtils": {
+                "$path": "src/Features/game/PlotService/PlotServiceUtils.luau"
+              }
+            },
+            "TroopService": {
+              "$className": "Folder",
+              "Objects": {
+                "$className": "Folder",
+                "Troop": {
+                  "$path": "src/Features/game/TroopService/objects/Troop.luau"
+                }
+              },
+              "TroopServiceClient": {
+                "$path": "src/Features/game/TroopService/TroopServiceClient.luau"
+              },
+              "TroopServiceUtils": {
+                "$path": "src/Features/game/TroopService/TroopServiceUtils.luau"
+              },
+              "TroopServiceVFX": {
+                "$path": "src/Features/game/TroopService/TroopServiceVFX"
+              }
+            }
+          }
+        },
+        "Core": {
+          "$className": "Folder",
+          "EasyAnimator": {
+            "$path": "src/core/EasyAnimator.luau"
+          }
+        },
+        "Game": {
+          "$className": "Folder"
+        },
+        "StartUp": {
+          "$className": "Folder",
+          "MountUI": {
+            "$path": "src/startup/MountUI.luau"
+          },
+          "Client": {
+            "$path": "src/startup/Client.client.luau"
+          }
+        },
+        "Shared": {
+          "$className": "Folder",
+          "Data": {
+            "$className": "Folder",
+            "TroopData": {
+              "$path": "src/Shared/Data/TroopData.luau"
+            }
+          },
+          "Modules": {
+            "$className": "Folder",
+            "Framework": {
+              "$className": "Folder",
+              "ComponentLoader": {
+                "$path": "src/Shared/Modules/Framework/ComponentLoader.luau"
+              },
+              "LemonSignal": {
+                "$path": "src/Shared/Modules/Framework/LemonSignal.luau"
+              },
+              "Maid": {
+                "$path": "src/Shared/Modules/Framework/Maid.luau"
+              },
+              "ModuleLoader": {
+                "$path": "src/Shared/Modules/Framework/ModuleLoader.luau"
+              },
+              "Net": {
+                "$path": "src/Shared/Modules/Framework/Net.luau"
+              },
+              "Octree": {
+                "$path": "src/Shared/Modules/Framework/Octree"
+              },
+              "ProfileStore": {
+                "$path": "src/Shared/Modules/Framework/ProfileStore.luau"
+              },
+              "FrameworkTypes": {
+                "$path": "src/Shared/Modules/Framework/Types.luau"
+              }
+            },
+            "Game": {
+              "$className": "Folder",
+              "ToggleCore": {
+                "$path": "src/Shared/Modules/Game/ToggleCore.luau"
+              },
+              "Zone": {
+                "$path": "src/Shared/Modules/Game/Zone",
+                "ZoneController": {
+                  "$path": "src/Shared/Modules/Game/Zone/ZoneController"
+                }
+              }
+            },
+            "Math": {
+              "$className": "Folder",
+              "Math": {
+                "$path": "src/Shared/Modules/Math/Math.luau"
+              }
+            },
+            "Structures": {
+              "$className": "Folder",
+              "Queue": {
+                "$path": "src/Shared/Modules/Structures/Queue.luau"
+              },
+              "Stack": {
+                "$path": "src/Shared/Modules/Structures/Stack.luau"
+              }
+            }
+          }
+        }
+      },
+      "Packages": {
+        "$path": "Packages"
+      }
+    },
+    "ServerScriptService": {
+      "Features": {
+        "$className": "Folder",
+        "Game": {
+          "$className": "Folder",
+          "PlotService": {
+            "$className": "Folder",
+            "PlotServiceServer": {
+              "$path": "src/Features/game/PlotService/PlotServiceServer.luau"
+            }
+          },
+          "TroopService": {
+            "$className": "Folder",
+            "TroopServiceServer": {
+              "$path": "src/Features/game/TroopService/TroopServiceServer.luau"
+            }
+          }
+        }
+      },
+      "Core": {
+        "$className": "Folder"
+      },
+      "Game": {
+        "$className": "Folder"
+      },
+      "StartUp": {
+        "$className": "Folder",
+        "Server": {
+          "$path": "src/startup/Server.server.luau"
+        }
+      }
+    }
+  }
+}
