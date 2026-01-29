@@ -53,45 +53,108 @@
               }
             }
           },
-          "Game": {
+          "Plots": {
             "$className": "Folder",
-            "PlotService": {
+            "Classes": {
               "$className": "Folder",
-              "PlotServiceClient": {
-                "$path": "src/Features/game/PlotService/PlotServiceClient.luau"
+              "PlotClient": {
+                "$path": "src/Features/Plots/classes/PlotClient.luau"
               },
-              "PlotServiceUtils": {
-                "$path": "src/Features/game/PlotService/PlotServiceUtils.luau"
+              "Troop": {
+                "$path": "src/Features/Plots/classes/Troop.luau"
               }
             },
-            "TroopService": {
-              "$className": "Folder",
-              "Objects": {
-                "$className": "Folder",
-                "Troop": {
-                  "$path": "src/Features/game/TroopService/objects/Troop.luau"
-                }
-              },
-              "TroopServiceClient": {
-                "$path": "src/Features/game/TroopService/TroopServiceClient.luau"
-              },
-              "TroopServiceUtils": {
-                "$path": "src/Features/game/TroopService/TroopServiceUtils.luau"
-              },
-              "TroopServiceVFX": {
-                "$path": "src/Features/game/TroopService/TroopServiceVFX"
-              }
+            "PlotServiceClient": {
+              "$path": "src/Features/Plots/PlotServiceClient.luau"
             }
+          },
+          "Vfx": {
+            "$path": "src/Features/vfx"
           }
         },
         "Core": {
           "$className": "Folder",
-          "EasyAnimator": {
-            "$path": "src/core/EasyAnimator.luau"
+          "Framework": {
+            "$className": "Folder",
+            "ComponentLoader": {
+              "$path": "src/core/Framework/ComponentLoader.luau"
+            },
+            "EasyAnimator": {
+              "$path": "src/core/Framework/EasyAnimator.luau"
+            },
+            "LemonSignal": {
+              "$path": "src/core/Framework/LemonSignal.luau"
+            },
+            "Maid": {
+              "$path": "src/core/Framework/Maid.luau"
+            },
+            "ModuleLoader": {
+              "$path": "src/core/Framework/ModuleLoader.luau"
+            },
+            "Net": {
+              "$path": "src/core/Framework/Net.luau"
+            },
+            "Octree": {
+              "$path": "src/core/Framework/Octree"
+            },
+            "ProfileStore": {
+              "$path": "src/core/Framework/ProfileStore.luau"
+            },
+            "FrameworkTypes": {
+              "$path": "src/core/Framework/Types.luau"
+            }
+          },
+          "Game": {
+            "$className": "Folder",
+            "ToggleCore": {
+              "$path": "src/core/Game/ToggleCore.luau"
+            },
+            "Zone": {
+              "$path": "src/core/Game/Zone",
+              "ZoneController": {
+                "$path": "src/core/Game/Zone/ZoneController"
+              }
+            }
+          },
+          "Math": {
+            "$className": "Folder",
+            "Math": {
+              "$path": "src/core/Math/Math.luau"
+            }
+          },
+          "Structures": {
+            "$className": "Folder",
+            "Queue": {
+              "$path": "src/core/Structures/Queue.luau"
+            },
+            "Stack": {
+              "$path": "src/core/Structures/Stack.luau"
+            }
           }
         },
         "Game": {
-          "$className": "Folder"
+          "$className": "Folder",
+          "Data": {
+            "$className": "Folder",
+            "EnemyData": {
+              "$path": "src/game/Data/EnemyData.luau"
+            },
+            "TroopData": {
+              "$path": "src/game/Data/TroopData.luau"
+            }
+          },
+          "Items": {
+            "$className": "Folder",
+            "AnimationIDs": {
+              "$path": "src/game/Items/AnimationIDs.luau"
+            },
+            "DataTemplate": {
+              "$path": "src/game/Items/DataTemplate.luau"
+            },
+            "ImageIDs": {
+              "$path": "src/game/Items/ImageIDs.luau"
+            }
+          }
         },
         "StartUp": {
           "$className": "Folder",
@@ -100,72 +163,6 @@
           },
           "Client": {
             "$path": "src/startup/Client.client.luau"
-          }
-        },
-        "Shared": {
-          "$className": "Folder",
-          "Data": {
-            "$className": "Folder",
-            "TroopData": {
-              "$path": "src/Shared/Data/TroopData.luau"
-            }
-          },
-          "Modules": {
-            "$className": "Folder",
-            "Framework": {
-              "$className": "Folder",
-              "ComponentLoader": {
-                "$path": "src/Shared/Modules/Framework/ComponentLoader.luau"
-              },
-              "LemonSignal": {
-                "$path": "src/Shared/Modules/Framework/LemonSignal.luau"
-              },
-              "Maid": {
-                "$path": "src/Shared/Modules/Framework/Maid.luau"
-              },
-              "ModuleLoader": {
-                "$path": "src/Shared/Modules/Framework/ModuleLoader.luau"
-              },
-              "Net": {
-                "$path": "src/Shared/Modules/Framework/Net.luau"
-              },
-              "Octree": {
-                "$path": "src/Shared/Modules/Framework/Octree"
-              },
-              "ProfileStore": {
-                "$path": "src/Shared/Modules/Framework/ProfileStore.luau"
-              },
-              "FrameworkTypes": {
-                "$path": "src/Shared/Modules/Framework/Types.luau"
-              }
-            },
-            "Game": {
-              "$className": "Folder",
-              "ToggleCore": {
-                "$path": "src/Shared/Modules/Game/ToggleCore.luau"
-              },
-              "Zone": {
-                "$path": "src/Shared/Modules/Game/Zone",
-                "ZoneController": {
-                  "$path": "src/Shared/Modules/Game/Zone/ZoneController"
-                }
-              }
-            },
-            "Math": {
-              "$className": "Folder",
-              "Math": {
-                "$path": "src/Shared/Modules/Math/Math.luau"
-              }
-            },
-            "Structures": {
-              "$className": "Folder",
-              "Queue": {
-                "$path": "src/Shared/Modules/Structures/Queue.luau"
-              },
-              "Stack": {
-                "$path": "src/Shared/Modules/Structures/Stack.luau"
-              }
-            }
           }
         }
       },
@@ -176,19 +173,16 @@
     "ServerScriptService": {
       "Features": {
         "$className": "Folder",
-        "Game": {
+        "Plots": {
           "$className": "Folder",
-          "PlotService": {
+          "Classes": {
             "$className": "Folder",
-            "PlotServiceServer": {
-              "$path": "src/Features/game/PlotService/PlotServiceServer.luau"
+            "PlotServer": {
+              "$path": "src/Features/Plots/classes/PlotServer.luau"
             }
           },
-          "TroopService": {
-            "$className": "Folder",
-            "TroopServiceServer": {
-              "$path": "src/Features/game/TroopService/TroopServiceServer.luau"
-            }
+          "PlotServiceServer": {
+            "$path": "src/Features/Plots/PlotServiceServer.luau"
           }
         }
       },

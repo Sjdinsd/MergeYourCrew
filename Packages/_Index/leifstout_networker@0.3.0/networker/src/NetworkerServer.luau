@@ -93,7 +93,6 @@ function NetworkerServer.new(networkTag: NetworkTag, module: {}?, clientAccess: 
 		assert(module, "Module must be provided if clientAccess is specified")
 		self:addClientAccess(module, clientAccess)
 	end
-
 	local function callback(player: Player, method: string, ...: any?): ...any?
 		local access = self._accessLookup[method]
 		if not access then

@@ -1,29 +1,21 @@
-local CollectionService = game:GetService("CollectionService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local ServerScriptService = game:GetService("ServerScriptService")
 
--- local ComponentLoader = require(ReplicatedStorage.Source.Shared.Modules.Framework.ComponentLoader)
-local ModuleLoader = require(ReplicatedStorage.Source.Shared.Modules.Framework.ModuleLoader)
+local dataservice = require(ReplicatedStorage.Packages.dataservice).server
 
--- local FEATURE_SERVICE_TAG = "FeatureServiceServer"
+local PlotServiceServer = require(ServerScriptService.Features.Plots.PlotServiceServer)
+local DataTemplate = require(ReplicatedStorage.Source.Game.Items.DataTemplate)
 
-local server = ServerScriptService.Features
+export type DataTemplate = typeof(DataTemplate)
 
-local services = {
-	server:FindFirstChild("Game"),
-	server:FindFirstChild("Core"),
-}
--- local components = {
--- 	server.Components,
--- }
-for _, folder in services do
-	ModuleLoader(folder)
-end
+dataservice:init({
+	template = DataTemplate,
+	profileStoreIndex = "beta.1",
+	useMock = false,
+	resetData = false,
+	dontSave = false,
+})
 
--- for _, folder in components do
--- 	ComponentLoader(folder)
--- end
+function dataservice:onPlayerInit(player: Player, data: DataTemplate) end
 
--- for _, module in CollectionService:GetTagged(FEATURE_SERVICE_TAG) do
--- 	ModuleLoader(module)
--- end
+PlotServiceServer:init()

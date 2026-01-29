@@ -7,6 +7,9 @@
 --          8o888
 
 local function init(unloadedModule, ...)
+	if unloadedModule.ClassName ~= "ModuleScript" then
+		return
+	end
 	local success, result = pcall(require, unloadedModule)
 	if success and result.init and type(result.init) == "function" then
 		result.init(...)
@@ -22,9 +25,6 @@ return function(moduleOrFolder: Instance, ...)
 	if moduleOrFolder:IsA("Folder") then
 		local requiredModules = {}
 		for _, unloadedModule in moduleOrFolder:GetChildren() do
-			if unloadedModule.ClassName == "Folder" then
-				return require(script)(unloadedModule)
-			end
 			requiredModules[unloadedModule.Name] = init(unloadedModule, ...)
 		end
 
