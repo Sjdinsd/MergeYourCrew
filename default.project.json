@@ -12,45 +12,84 @@
             "$className": "Folder",
             "Components": {
               "$className": "Folder",
+              "ExitButton": {
+                "$path": "src/Features/app/components/ExitButton.luau"
+              },
+              "SidebarButton": {
+                "$path": "src/Features/app/components/SidebarButton.luau"
+              },
+              "StuddedButton": {
+                "$path": "src/Features/app/components/StuddedButton.luau"
+              },
               "StuddedFrame": {
                 "$path": "src/Features/app/components/StuddedFrame.luau"
+              },
+              "Window": {
+                "$path": "src/Features/app/components/Window.luau"
               }
             },
-            "Debug": {
+            "Menus": {
               "$className": "Folder",
-              "Debug.story": {
-                "$path": "src/Features/app/Debug/Debug.story.luau"
+              "Menu": {
+                "$path": "src/Features/app/Menus/Menu.luau"
               },
-              "RootUI": {
-                "$path": "src/Features/app/Debug/RootUI.luau"
+              "RebirthMenu": {
+                "$path": "src/Features/app/Menus/RebirthMenu.luau"
+              },
+              "ShopMenu": {
+                "$path": "src/Features/app/Menus/ShopMenu.luau"
+              },
+              "UpgradesMenu": {
+                "$path": "src/Features/app/Menus/UpgradesMenu.luau"
               }
             },
-            "HUD": {
+            "Modules": {
               "$className": "Folder",
-              "HUD.story": {
-                "$path": "src/Features/app/HUD/HUD.story.luau"
-              },
-              "RootUI": {
-                "$path": "src/Features/app/HUD/RootUI.luau"
+              "ComponentSets": {
+                "$path": "src/Features/app/modules/ComponentSets.luau"
               }
             },
-            "Menu": {
+            "Notifications": {
               "$className": "Folder",
-              "Menu.story": {
-                "$path": "src/Features/app/Menu/Menu.story.luau"
+              "NotificationPopup": {
+                "$path": "src/Features/app/Notifications/NotificationPopup.luau"
               },
-              "RootUI": {
-                "$path": "src/Features/app/Menu/RootUI.luau"
+              "Notifications": {
+                "$path": "src/Features/app/Notifications/Notifications.luau"
               }
             },
-            "Popup": {
+            "root.story": {
+              "$path": "src/Features/app/root.story.luau"
+            },
+            "RootUI": {
+              "$path": "src/Features/app/RootUI.luau"
+            },
+            "Sidebar": {
               "$className": "Folder",
-              "Popup.story": {
-                "$path": "src/Features/app/Popup/Popup.story.luau"
-              },
-              "RootUI": {
-                "$path": "src/Features/app/Popup/RootUI.luau"
+              "Sidebar": {
+                "$path": "src/Features/app/Sidebar/Sidebar.luau"
               }
+            },
+            "TroopSelection": {
+              "$className": "Folder",
+              "Buffs": {
+                "$path": "src/Features/app/TroopSelection/Buffs.luau"
+              },
+              "TroopInfo": {
+                "$path": "src/Features/app/TroopSelection/TroopInfo.luau"
+              },
+              "TroopOptions": {
+                "$path": "src/Features/app/TroopSelection/TroopOptions.luau"
+              },
+              "TroopSelection": {
+                "$path": "src/Features/app/TroopSelection/TroopSelection.luau"
+              }
+            },
+            "UIController": {
+              "$path": "src/Features/app/UIController.luau"
+            },
+            "UISlice": {
+              "$path": "src/Features/app/UISlice.luau"
             }
           },
           "Plots": {
@@ -66,6 +105,24 @@
             },
             "PlotServiceClient": {
               "$path": "src/Features/Plots/PlotServiceClient.luau"
+            },
+            "PlotServiceUtils": {
+              "$path": "src/Features/Plots/PlotServiceUtils.luau"
+            },
+            "PlotSlice": {
+              "$path": "src/Features/Plots/PlotSlice.luau"
+            },
+            "PlotTypes": {
+              "$path": "src/Features/Plots/PlotTypes.luau"
+            },
+            "TroopManager": {
+              "$path": "src/Features/Plots/TroopManager.luau"
+            },
+            "UI": {
+              "$className": "Folder",
+              "StartFightingButton": {
+                "$path": "src/Features/Plots/ui/StartFightingButton.luau"
+              }
             }
           },
           "Vfx": {
@@ -93,6 +150,9 @@
             },
             "Net": {
               "$path": "src/core/Framework/Net.luau"
+            },
+            "Networker": {
+              "$path": "src/core/Framework/Networker"
             },
             "Octree": {
               "$path": "src/core/Framework/Octree"
@@ -153,6 +213,9 @@
             },
             "ImageIDs": {
               "$path": "src/game/Items/ImageIDs.luau"
+            },
+            "RoundCheckpoints": {
+              "$path": "src/game/Items/RoundCheckpoints.luau"
             }
           }
         },
