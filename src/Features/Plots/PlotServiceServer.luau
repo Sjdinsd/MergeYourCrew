@@ -3,7 +3,7 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local ServerScriptService = game:GetService("ServerScriptService")
 
 local PlotServer = require(ServerScriptService.Features.Plots.Classes.PlotServer)
-local networker = require(ReplicatedStorage.Packages.networker)
+local Networker = require(ReplicatedStorage.Source.Core.Framework.Networker)
 
 local plotDict = {}
 
@@ -14,7 +14,7 @@ local PLOT_FOLDER = workspace:FindFirstChild("Plots")
 local PlotServiceServer = {}
 
 function PlotServiceServer.init(self: PlotServiceServer)
-	self.networker = networker.server.new("PlotService", PlotServiceServer, {})
+	self.networker = Networker.server.new("PlotService", PlotServiceServer, {})
 
 	for _, plotPoint: Attachment in PLOT_FOLDER.PlotPoints:QueryDescendants("Attachment") do
 		local newPlotModel = ReplicatedStorage.Assets.Plot:Clone()
@@ -41,10 +41,19 @@ function PlotServiceServer.init(self: PlotServiceServer)
 			break
 		end
 	end)
+	Players.PlayerRemoving:Connect(function(player: Player)
+		local plot = playerPlots[player]
+		-- save plot
+		plot:destroy()
+	end)
+end
+
+function PlotServiceServer.getPlot(player: Player)
+	return playerPlots[player]
 end
 
 export type PlotServiceServer = typeof(PlotServiceServer) & {
-	networker: networker.Server,
+	networker: Networker.Server,
 }
 
-return PlotServiceServer
+return PlotServiceServer :: PlotServiceServer

@@ -1,11 +1,11 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-
+local MountUI = require(ReplicatedStorage.Source.StartUp.MountUI)
 local PlotServiceClient = require(ReplicatedStorage.Source.Features.Plots.PlotServiceClient)
-
 local Vfx = require(ReplicatedStorage.Source.Features.Vfx)
-Vfx.init()
-
-PlotServiceClient:init()
-
 local dataservice = require(ReplicatedStorage.Packages.dataservice)
+local UIController = require(ReplicatedStorage.Source.Features.App.UIController)
+UIController:init()
+MountUI()
+Vfx.init()
+PlotServiceClient:init()
 dataservice.client:init()
