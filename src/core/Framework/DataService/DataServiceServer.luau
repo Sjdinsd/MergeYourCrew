@@ -1,18 +1,17 @@
 --!strict
 local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 
 if RunService:IsClient() then
 	return {} :: DataServiceServer
 end
 
-local Packages = script.Parent.Parent
-local Signal = require(Packages.Signal)
-local Networker = require(Packages.Networker)
-local ProfileStore = if RunService:IsServer() then require(Packages.ProfileStore) else nil :: any
-local Data = require(script.Parent.Data)
-local DataServiceUtils = require(script.Parent.DataServiceUtils)
-
+local Data = require(ReplicatedStorage.Source.Core.Framework.DataService.Data)
+local DataServiceUtils = require(ReplicatedStorage.Source.Core.Framework.DataService.DataServiceUtils)
+local Signal = require(ReplicatedStorage.Source.Core.Framework.LemonSignal)
+local Networker = require(ReplicatedStorage.Source.Core.Framework.Networker)
+local ProfileStore = if RunService:IsServer() then require(ReplicatedStorage.Source.Core.Framework.ProfileStore) else nil :: any
 local DATA_PREFIX = "PLAYER_"
 local DEFAULT_PROFILE_STORE_INDEX = "Default"
 
@@ -282,11 +281,7 @@ end
 	end)
 	```
 ]=]
-function DataServiceServer.addGlobalCallback(
-	self: DataServiceServer,
-	key: string,
-	cb: (player: Player, { any }) -> boolean?
-): ()
+function DataServiceServer.addGlobalCallback(self: DataServiceServer, key: string, cb: (player: Player, { any }) -> boolean?): ()
 	assert(self._globalCallbacks[key] == nil, "Global callback already exists for key: " .. key)
 	self._globalCallbacks[key] = cb
 	self._globalCallbackAdded:Fire(key)
@@ -370,10 +365,7 @@ function DataServiceServer.onPlayerInit(_self: DataServiceServer, _player: Playe
 	disconnect()
 	```
 ]=]
-function DataServiceServer.addPlayerRemovingCallback(
-	self: DataServiceServer,
-	fn: (player: Player, data: any) -> ()
-): () -> ()
+function DataServiceServer.addPlayerRemovingCallback(self: DataServiceServer, fn: (player: Player, data: any) -> ()): () -> ()
 	table.insert(self._removalFunctions, fn)
 	return function()
 		local index = table.find(self._removalFunctions, fn)
@@ -692,4 +684,4 @@ export type DataServiceServer = typeof(DataServiceServer) & {
 	networker: Networker.Server,
 }
 
-return DataServiceServer
+return DataServiceServer :: DataServiceServer

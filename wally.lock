@@ -108,16 +108,6 @@ version = "1.2.7"
 dependencies = [["collections", "jsdotlua/collections@1.2.7"]]
 
 [[package]]
-name = "leifstout/dataservice"
-version = "0.4.0"
-dependencies = [["Janitor", "howmanysmall/janitor@1.18.3"], ["Networker", "leifstout/networker@0.2.1"], ["ProfileStore", "lm-loleris/profilestore@1.0.3"], ["Signal", "sleitnick/signal@2.0.3"]]
-
-[[package]]
-name = "leifstout/networker"
-version = "0.2.1"
-dependencies = [["Signal", "sleitnick/signal@2.0.3"]]
-
-[[package]]
 name = "littensy/charm"
 version = "0.10.0"
 dependencies = []
@@ -138,11 +128,6 @@ version = "0.10.1"
 dependencies = []
 
 [[package]]
-name = "lm-loleris/profilestore"
-version = "1.0.3"
-dependencies = []
-
-[[package]]
 name = "osyrisrblx/t"
 version = "3.1.1"
 dependencies = []
@@ -155,9 +140,4 @@ dependencies = []
 [[package]]
 name = "sjdinsd/temp"
 version = "0.1.0"
-dependencies = [["React", "jsdotlua/react@17.2.1"], ["ReactRoblox", "jsdotlua/react-roblox@17.2.1"], ["charm", "littensy/charm@0.10.0"], ["dataservice", "leifstout/dataservice@0.4.0"], ["janitor", "howmanysmall/janitor@1.18.3"], ["react-charm", "littensy/react-charm@0.3.0"], ["react-ripple", "littensy/react-ripple@3.0.1"], ["ripple", "littensy/ripple@0.10.1"], ["sift", "csqrl/sift@0.0.11"], ["t", "osyrisrblx/t@3.1.1"], ["ui-labs", "pepeeltoro41/ui-labs@2.4.2"]]
-
-[[package]]
-name = "sleitnick/signal"
-version = "2.0.3"
-dependencies = []
+dependencies = [["React", "jsdotlua/react@17.2.1"], ["ReactRoblox", "jsdotlua/react-roblox@17.2.1"], ["charm", "littensy/charm@0.10.0"], ["janitor", "howmanysmall/janitor@1.18.3"], ["react-charm", "littensy/react-charm@0.3.0"], ["react-ripple", "littensy/react-ripple@3.0.1"], ["ripple", "littensy/ripple@0.10.1"], ["sift", "csqrl/sift@0.0.11"], ["t", "osyrisrblx/t@3.1.1"], ["ui-labs", "pepeeltoro41/ui-labs@2.4.2"]]

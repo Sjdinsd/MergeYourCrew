@@ -1,5 +1,6 @@
-local Packages = script.Parent.Parent
-local Signal = require(Packages.Signal)
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+local Signal = require(ReplicatedStorage.Source.Core.Framework.LemonSignal)
 
 local Data = {}
 Data.__index = Data

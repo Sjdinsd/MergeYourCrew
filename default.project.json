@@ -103,6 +103,15 @@
                 "$path": "src/Features/Plots/classes/Troop.luau"
               }
             },
+            "Modules": {
+              "$className": "Folder",
+              "EnemyData": {
+                "$path": "src/Features/Plots/modules/EnemyData.luau"
+              },
+              "TroopData": {
+                "$path": "src/Features/Plots/modules/TroopData.luau"
+              }
+            },
             "PlotServiceClient": {
               "$path": "src/Features/Plots/PlotServiceClient.luau"
             },
@@ -135,6 +144,9 @@
             "$className": "Folder",
             "ComponentLoader": {
               "$path": "src/core/Framework/ComponentLoader.luau"
+            },
+            "DataService": {
+              "$path": "src/core/Framework/DataService"
             },
             "EasyAnimator": {
               "$path": "src/core/Framework/EasyAnimator.luau"
@@ -194,15 +206,6 @@
         },
         "Game": {
           "$className": "Folder",
-          "Data": {
-            "$className": "Folder",
-            "EnemyData": {
-              "$path": "src/game/Data/EnemyData.luau"
-            },
-            "TroopData": {
-              "$path": "src/game/Data/TroopData.luau"
-            }
-          },
           "Items": {
             "$className": "Folder",
             "AnimationIDs": {
@@ -250,7 +253,16 @@
         }
       },
       "Core": {
-        "$className": "Folder"
+        "$className": "Folder",
+        "Framework": {
+          "$className": "Folder",
+          "DataService": {
+            "$className": "Folder",
+            "DataServiceServer": {
+              "$path": "src/core/Framework/DataService/DataServiceServer.luau"
+            }
+          }
+        }
       },
       "Game": {
         "$className": "Folder"

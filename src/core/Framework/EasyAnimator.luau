@@ -1,7 +1,6 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
 local sift = require(ReplicatedStorage.Packages.sift)
-local Private = {}
 local EasyAnimator = {}
 
 export type AnimationOptions = number

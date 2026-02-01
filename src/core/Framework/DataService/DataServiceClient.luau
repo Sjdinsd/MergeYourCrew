@@ -1,12 +1,12 @@
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local RunService = game:GetService("RunService")
 
 if RunService:IsServer() then
 	return {} :: DataServiceClient
 end
 
-local Packages = script.Parent.Parent
-local Signal = require(Packages.Signal)
-local Networker = require(Packages.Networker)
+local Signal = require(ReplicatedStorage.Source.Core.Framework.LemonSignal)
+local Networker = require(ReplicatedStorage.Source.Core.Framework.Networker)
 local DataServiceUtils = require(script.Parent.DataServiceUtils)
 local Data = require(script.Parent.Data)
 
@@ -116,6 +116,11 @@ end
 	:::
 ]=]
 function DataServiceClient.set(self: DataServiceClient, path: Path, value: any)
+	-- if not self._data then
+	-- 	print("waiting")
+	-- 	self:waitForData()
+	-- 	print("finished")
+	-- end
 	self._data:set(path, value)
 end
 
