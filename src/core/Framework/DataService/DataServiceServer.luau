@@ -7,14 +7,14 @@ if RunService:IsClient() then
 	return {} :: DataServiceServer
 end
 
+local DATA_PREFIX = "PLAYER_"
+local DEFAULT_PROFILE_STORE_INDEX = "Default"
+
 local Data = require(ReplicatedStorage.Source.Core.Framework.DataService.Data)
 local DataServiceUtils = require(ReplicatedStorage.Source.Core.Framework.DataService.DataServiceUtils)
 local Signal = require(ReplicatedStorage.Source.Core.Framework.LemonSignal)
 local Networker = require(ReplicatedStorage.Source.Core.Framework.Networker)
 local ProfileStore = if RunService:IsServer() then require(ReplicatedStorage.Source.Core.Framework.ProfileStore) else nil :: any
-local DATA_PREFIX = "PLAYER_"
-local DEFAULT_PROFILE_STORE_INDEX = "Default"
-
 type Path = Data.Path
 type Signal<T> = Signal.Signal<T>
 
@@ -684,4 +684,4 @@ export type DataServiceServer = typeof(DataServiceServer) & {
 	networker: Networker.Server,
 }
 
-return DataServiceServer :: DataServiceServer
+return DataServiceServer

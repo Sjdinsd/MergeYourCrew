@@ -5,10 +5,10 @@ if RunService:IsServer() then
 	return {} :: DataServiceClient
 end
 
+local Data = require(ReplicatedStorage.Source.Core.Framework.DataService.Data)
+local DataServiceUtils = require(ReplicatedStorage.Source.Core.Framework.DataService.DataServiceUtils)
 local Signal = require(ReplicatedStorage.Source.Core.Framework.LemonSignal)
 local Networker = require(ReplicatedStorage.Source.Core.Framework.Networker)
-local DataServiceUtils = require(script.Parent.DataServiceUtils)
-local Data = require(script.Parent.Data)
 
 type Signal<T> = Signal.Signal<T>
 type Path = Data.Path
@@ -116,11 +116,6 @@ end
 	:::
 ]=]
 function DataServiceClient.set(self: DataServiceClient, path: Path, value: any)
-	-- if not self._data then
-	-- 	print("waiting")
-	-- 	self:waitForData()
-	-- 	print("finished")
-	-- end
 	self._data:set(path, value)
 end
 
