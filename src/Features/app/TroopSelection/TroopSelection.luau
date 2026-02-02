@@ -11,6 +11,7 @@ local TroopInfo = require(ReplicatedStorage.Source.Features.App.TroopSelection.T
 local TroopOptions = require(ReplicatedStorage.Source.Features.App.TroopSelection.TroopOptions)
 local UIController = require(ReplicatedStorage.Source.Features.App.UIController)
 local UISlice = require(ReplicatedStorage.Source.Features.App.UISlice)
+local PlotSlice = require(ReplicatedStorage.Source.Features.Plots.PlotSlice)
 local e = React.createElement
 
 local EXIT_SHOWN = UDim2.new(1, -10, 0, 10)
@@ -34,6 +35,7 @@ return function(props: {})
 			TargetMenuOrCallback = function()
 				UIController:clearComponents()
 				UIController:bulkShowComponents(ComponentSets.IniitalComponents)
+				PlotSlice.SelectedTroop(nil)
 			end,
 			Position = exitPosBinding,
 			Size = UDim2.fromScale(0.15, 0.15),

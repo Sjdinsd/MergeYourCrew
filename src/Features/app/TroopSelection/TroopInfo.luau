@@ -4,8 +4,9 @@ local React = require(ReplicatedStorage.Packages.React)
 local react_charm = require(ReplicatedStorage.Packages["react-charm"])
 local react_ripple = require(ReplicatedStorage.Packages["react-ripple"])
 local UISlice = require(ReplicatedStorage.Source.Features.App.UISlice)
+local TroopData = require(ReplicatedStorage.Source.Features.Plots.Modules.TroopData)
 local PlotSlice = require(ReplicatedStorage.Source.Features.Plots.PlotSlice)
-local TroopData = require(ReplicatedStorage.Source.Game.Data.TroopData)
+
 local e = React.createElement
 
 local function rpmToRps(rpm)

@@ -1,13 +1,13 @@
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
-local dataservice = require(ReplicatedStorage.Packages.dataservice).server
 local janitor = require(ReplicatedStorage.Packages.janitor)
 local sift = require(ReplicatedStorage.Packages.sift)
+local DataService = require(ReplicatedStorage.Source.Core.Framework.DataService).server
 local Networker = require(ReplicatedStorage.Source.Core.Framework.Networker)
 local Troop = require(ReplicatedStorage.Source.Features.Plots.Classes.Troop)
+local TroopData = require(ReplicatedStorage.Source.Features.Plots.Modules.TroopData)
 local PlotServiceUtils = require(ReplicatedStorage.Source.Features.Plots.PlotServiceUtils)
 local PlotTypes = require(ReplicatedStorage.Source.Features.Plots.PlotTypes)
-local TroopData = require(ReplicatedStorage.Source.Game.Data.TroopData)
 local RoundCheckpoints = require(ReplicatedStorage.Source.Game.Items.RoundCheckpoints)
 
 local ROUND_CD = 1
@@ -61,7 +61,7 @@ function PlotServer.new(player: Player, plotIndex: number)
 		{ self.PurchaseTroop, self.UpgradeBaseLevel, self.UpgradeStartingLevel, self.StartFighting, self.StopFighting }
 	)
 
-	local disconnect = dataservice:addPlayerRemovingCallback(function(player: Player, data: any)
+	local disconnect = DataService:addPlayerRemovingCallback(function(player: Player, data: any)
 		self:save()
 	end)
 	self._janitor:Add(disconnect)
@@ -84,7 +84,7 @@ function PlotServer.save(self: PlotServer)
 		table.insert(unloadedTroops, unloadedTroop)
 	end
 
-	dataservice:set(self.player, "Troops", unloadedTroops)
+	DataService:set(self.player, "Troops", unloadedTroops)
 end
 
 function PlotServer.shoot(self: PlotServer, guid)
@@ -132,7 +132,7 @@ function PlotServer.StartFighting(self: PlotServer)
 	self.lastUpdatedFighting = os.clock()
 
 	self.fightingThread = coroutine.create(function()
-		local startingRound = dataservice:get(self.player, "Round")
+		local startingRound = DataService:get(self.player, "Round")
 		local round = startingRound or 0
 		local nextCheckpoint = RoundCheckpoints[round].NextCheckpoint
 		self.networker:fire(self.player, "StartFighting", startingRound)
@@ -168,8 +168,8 @@ function PlotServer.StopFighting(self: PlotServer)
 end
 
 function PlotServer.PurchaseTroop(self: PlotServer)
-	local money = dataservice:get(self.player, "Money")
-	local startingLevel = dataservice:get(self.player, { "Base", "TroopStartingLevel" })
+	local money = DataService:get(self.player, "Money")
+	local startingLevel = DataService:get(self.player, { "Base", "TroopStartingLevel" })
 
 	local requiredMoney = PlotServiceUtils.calculateTroopCost(startingLevel)
 
@@ -182,7 +182,7 @@ function PlotServer.PurchaseTroop(self: PlotServer)
 		end
 		local addedTroop = self:addTroop(troopID)
 		if addedTroop then
-			dataservice:update(self.player, { "Money" }, function(current)
+			DataService:update(self.player, { "Money" }, function(current)
 				return current - requiredMoney
 			end)
 		end

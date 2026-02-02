@@ -1,8 +1,8 @@
 local HttpService = game:GetService("HttpService")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
+local TroopData = require(ReplicatedStorage.Source.Features.Plots.Modules.TroopData)
 local PlotTypes = require(ReplicatedStorage.Source.Features.Plots.PlotTypes)
-local TroopData = require(ReplicatedStorage.Source.Game.Data.TroopData)
 
 local Troop = {}
 Troop.__index = Troop

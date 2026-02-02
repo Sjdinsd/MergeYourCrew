@@ -1,6 +1,7 @@
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
+local charm = require(ReplicatedStorage.Packages.charm)
 local janitor = require(ReplicatedStorage.Packages.janitor)
 local Networker = require(ReplicatedStorage.Source.Core.Framework.Networker)
 local ComponentSets = require(ReplicatedStorage.Source.Features.App.Modules.ComponentSets)
@@ -100,7 +101,6 @@ function PlotClient.init(self: PlotClient)
 			return
 		end
 		target = target.Parent
-		selectedHighlight.Adornee = target
 
 		PlotSlice.SelectedTroop(self.troops[target.Name])
 
@@ -111,7 +111,13 @@ function PlotClient.init(self: PlotClient)
 	self.janitor:Add(mouseMoveConn, "Disconnect")
 	self.janitor:Add(mouseClickConn, "Disconnect")
 
-	UIController:showComponent("StartFightingButton")
+	charm.subscribe(PlotSlice.SelectedTroop, function(state)
+		if state ~= nil then
+			selectedHighlight.Adornee = state.model
+		else
+			selectedHighlight.Adornee = state
+		end
+	end)
 end
 
 function PlotClient.StartFighting(self: PlotClient)
