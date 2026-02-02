@@ -49,16 +49,22 @@ function PlotServer.new(player: Player, plotIndex: number)
 
 		_janitor = janitor.new(),
 
-		StartFighting = PlotServer.StartFighting,
-		StopFighting = PlotServer.StopFighting,
-		PurchaseTroop = PlotServer.PurchaseTroop,
-		UpgradeBaseLevel = PlotServer.UpgradeBaseLevel,
-		UpgradeStartingLevel = PlotServer.UpgradeStartingLevel,
+		-- StartFighting = PlotServer.StartFighting,
+		-- StopFighting = PlotServer.StopFighting,
+		-- PurchaseTroop = PlotServer.PurchaseTroop,
+		-- UpgradeBaseLevel = PlotServer.UpgradeBaseLevel,
+		-- UpgradeStartingLevel = PlotServer.UpgradeStartingLevel,
 	}, PlotServer)
 	self.networker = Networker.server.new(
 		"Plot" .. plotIndex,
 		self,
-		{ self.PurchaseTroop, self.UpgradeBaseLevel, self.UpgradeStartingLevel, self.StartFighting, self.StopFighting }
+		{
+			PlotServer.PurchaseTroop,
+			PlotServer.UpgradeBaseLevel,
+			PlotServer.UpgradeStartingLevel,
+			PlotServer.StartFighting,
+			PlotServer.StopFighting,
+		}
 	)
 
 	local disconnect = DataService:addPlayerRemovingCallback(function(player: Player, data: any)

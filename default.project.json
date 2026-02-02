@@ -160,8 +160,8 @@
             "ModuleLoader": {
               "$path": "src/core/Framework/ModuleLoader.luau"
             },
-            "Net": {
-              "$path": "src/core/Framework/Net.luau"
+            "Networker": {
+              "$path": "src/core/Framework/Networker"
             },
             "Octree": {
               "$path": "src/core/Framework/Octree"

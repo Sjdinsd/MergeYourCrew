@@ -1,5 +1,3 @@
---nocheck
---nolint
 --[[
 MAD STUDIO (by loleris)
 
@@ -336,15 +334,14 @@ local MockFlag = false
 local OnError = Signal.New() -- (message, store_name, profile_key)
 local OnOverwrite = Signal.New() -- (store_name, profile_key)
 
-local UpdateQueue =
-	{ -- For stability sake, we won't do UpdateAsync calls for the same key until all previous calls finish
-		--[[
+local UpdateQueue = { -- For stability sake, we won't do UpdateAsync calls for the same key until all previous calls finish
+	--[[
 		[session_token] = {
 			coroutine, ...
 		},
 		...
 	--]]
-	}
+}
 
 local function WaitInUpdateQueue(session_token) --> next_in_queue()
 	local is_first = false
@@ -535,11 +532,7 @@ local function UpdateAsync(profile_store, profile_key, transform_params, is_user
 					if transform_params.ExistingProfileHandle ~= nil then
 						transform_params.ExistingProfileHandle(latest_data)
 					end
-				elseif
-					latest_data.Data == nil
-					and latest_data.MetaData == nil
-					and type(latest_data.GlobalUpdates) == "table"
-				then
+				elseif latest_data.Data == nil and latest_data.MetaData == nil and type(latest_data.GlobalUpdates) == "table" then
 					-- Regular structure not detected, but GlobalUpdate data exists:
 
 					latest_data.WasOverwritten = false -- Must be set to false if set previously
@@ -581,8 +574,7 @@ local function UpdateAsync(profile_store, profile_key, transform_params, is_user
 				MockUpdateAsync(UserMockStore, profile_store.Name, profile_key, transform_function, is_get_call)
 			task.wait() -- Simulate API call yield
 		elseif DataStoreState ~= "Access" then -- Used when API access is disabled
-			loaded_data, key_info =
-				MockUpdateAsync(MockStore, profile_store.Name, profile_key, transform_function, is_get_call)
+			loaded_data, key_info = MockUpdateAsync(MockStore, profile_store.Name, profile_key, transform_function, is_get_call)
 			task.wait() -- Simulate API call yield
 		else
 			if is_get_call == true then
@@ -718,8 +710,7 @@ local function SaveProfileAsync(profile, is_ending_session, is_overwriting, last
 					local session_load_count = latest_data.MetaData.SessionLoadCount
 
 					if type(active_session) == "table" then
-						session_owns_profile = IsThisSession(active_session)
-							and session_load_count == profile.load_index
+						session_owns_profile = IsThisSession(active_session) and session_load_count == profile.load_index
 					end
 				else
 					session_owns_profile = true
@@ -919,17 +910,11 @@ export type Profile<T> = {
 	KeyInfo: DataStoreKeyInfo,
 	OnSave: { Connect: (self: any, listener: () -> ()) -> { Disconnect: (self: any) -> () } },
 	OnLastSave: {
-		Connect: (
-			self: any,
-			listener: (reason: "Manual" | "External" | "Shutdown") -> ()
-		) -> { Disconnect: (self: any) -> () },
+		Connect: (self: any, listener: (reason: "Manual" | "External" | "Shutdown") -> ()) -> { Disconnect: (self: any) -> () },
 	},
 	OnSessionEnd: { Connect: (self: any, listener: () -> ()) -> { Disconnect: (self: any) -> () } },
 	OnAfterSave: {
-		Connect: (
-			self: any,
-			listener: (last_saved_data: T & JSONAcceptable) -> ()
-		) -> { Disconnect: (self: any) -> () },
+		Connect: (self: any, listener: (last_saved_data: T & JSONAcceptable) -> ()) -> { Disconnect: (self: any) -> () },
 	},
 	ProfileStore: JSONAcceptable,
 	Key: string,
@@ -989,14 +974,9 @@ export type ProfileStoreModule = {
 		) -> { Disconnect: (self: any) -> () },
 	},
 	OnOverwrite: {
-		Connect: (
-			self: any,
-			listener: (store_name: string, profile_key: string) -> ()
-		) -> { Disconnect: (self: any) -> () },
+		Connect: (self: any, listener: (store_name: string, profile_key: string) -> ()) -> { Disconnect: (self: any) -> () },
 	},
-	OnCriticalToggle: {
-		Connect: (self: any, listener: (is_critical: boolean) -> ()) -> { Disconnect: (self: any) -> () },
-	},
+	OnCriticalToggle: { Connect: (self: any, listener: (is_critical: boolean) -> ()) -> { Disconnect: (self: any) -> () } },
 	DataStoreState: "NotReady" | "NoInternet" | "NoAccess" | "Access",
 	New: <T>(store_name: string, template: (T & JSONAcceptable)?) -> ProfileStore<T>,
 	SetConstant: (name: ConstantName, value: number) -> (),
@@ -1067,10 +1047,7 @@ end
 
 function Profile:AddUserId(user_id) -- Associates user_id with profile (GDPR compliance)
 	if type(user_id) ~= "number" or user_id % 1 ~= 0 then
-		warn(
-			`[{script.Name}]: Invalid UserId argument for :AddUserId() ({tostring(user_id)}); Traceback:\n`
-				.. debug.traceback()
-		)
+		warn(`[{script.Name}]: Invalid UserId argument for :AddUserId() ({tostring(user_id)}); Traceback:\n` .. debug.traceback())
 		return
 	end
 
@@ -1939,10 +1916,7 @@ function ProfileStore:VersionQuery(profile_key, sort_direction, min_date, max_da
 
 	-- Type check:
 
-	if
-		sort_direction ~= nil
-		and (typeof(sort_direction) ~= "EnumItem" or sort_direction.EnumType ~= Enum.SortDirection)
-	then
+	if sort_direction ~= nil and (typeof(sort_direction) ~= "EnumItem" or sort_direction.EnumType ~= Enum.SortDirection) then
 		error(`[{script.Name}]: Invalid sort_direction ({tostring(sort_direction)})`)
 	end
 
